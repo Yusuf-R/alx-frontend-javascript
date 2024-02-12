@@ -7,7 +7,7 @@ function getFullResponseFromAPI(success) {
         body: 'Success',
       });
     } else {
-      reject(fmsg);
+      reject(new Error(fmsg));
     }
   });
 }
