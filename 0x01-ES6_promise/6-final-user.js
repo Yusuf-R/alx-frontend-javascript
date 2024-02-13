@@ -6,11 +6,7 @@ function handleProfileSignup(firstName, lastName, fileName) {
   const pr2 = uploadPhoto(fileName); // Returns a promise
   const allPr = [pr1, pr2];
 
-  return Promise.allSettled(allPr)
-    .then((results) => results.map((result) => ({
-      status: result.status,
-      value: result.status === 'fulfilled' ? result.value : result.reason,
-    })));
+  return Promise.allSettled(allPr);
 }
 
 export default handleProfileSignup;
