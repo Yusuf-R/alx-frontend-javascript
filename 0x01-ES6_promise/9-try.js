@@ -3,8 +3,8 @@ function guardrail(mathFunction) {
   const queue = [];
   try {
     queue.push(mathFunction());
-  } catch (error) {
-    queue.push(error.message);
+  } catch (err) {
+    queue.push(`Error: ${err.message}`);
   } finally {
     queue.push(msg);
   }
