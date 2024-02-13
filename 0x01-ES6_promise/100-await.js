@@ -1,20 +1,24 @@
 import { createUser, uploadPhoto } from './utils';
 
 async function asyncUploadUser() {
-  const rspPhoto = await uploadPhoto();
-  const rspUser = await createUser();
-
-  const retFail = {
+  const failMsg = {
     photo: null,
     user: null,
   };
-  if (!rspUser || !rspPhoto) {
-    return retFail;
+  try {
+    const rspPhoto = await uploadPhoto();
+    const rspUser = await createUser();
+
+    if (!rspUser || !rspPhoto) {
+      return failMsg;
+    }
+    return {
+      photo: rspPhoto,
+      user: rspUser,
+    };
+  } catch (err) {
+    return failMsg;
   }
-  return {
-    photo: rspPhoto,
-    user: rspUser,
-  };
 }
 
 export default asyncUploadUser;
