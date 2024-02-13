@@ -42,10 +42,10 @@ class Pricing {
   }
 
   static converPrice(amount, conversionRate) {
-    if (typeof amount === 'number') {
+    if (typeof amount !== 'number') {
       return ('amount must be a number');
     }
-    if (typeof conversionRate === 'number') {
+    if (typeof conversionRate !== 'number') {
       return ('conversionRate must be a number');
     }
     const ret = amount * conversionRate;
