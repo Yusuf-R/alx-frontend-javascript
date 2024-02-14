@@ -7,19 +7,12 @@ class SkyHighBuilding extends Building {
     if (typeof floors !== 'number') {
       return ('floors must be a number');
     }
+    if (typeof sqft !== 'number') {
+      throw new TypeError('sqft must be a number');
+    }
     super(sqft);
     this._floors = floors;
     this._sqft = sqft;
-  }
-
-  get sqft() {
-    return this._sqft;
-  }
-
-  set sqft(data) {
-    if (typeof data !== 'number') {
-      throw new TypeError('data must be a number');
-    }
   }
 
   get floors() {
@@ -30,6 +23,7 @@ class SkyHighBuilding extends Building {
     if (typeof data !== 'number') {
       throw new TypeError('data must be a number');
     }
+    this._floors = data;
   }
 
   evacuationWarningMessage() {
