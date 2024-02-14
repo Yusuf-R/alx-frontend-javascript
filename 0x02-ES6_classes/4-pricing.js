@@ -41,7 +41,7 @@ class Pricing {
     return ret;
   }
 
-  static converPrice(amount, conversionRate) {
+  static convertPrice(amount, conversionRate) {
     if (typeof amount !== 'number') {
       return ('amount must be a number');
     }
