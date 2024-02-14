@@ -10,6 +10,10 @@ class Car {
     // if (typeof color !== 'string') {
     //   throw new TypeError('Color must be a string');
     // }
+
+    // no need for the error handling because we intend to implement shallow copy
+    // with the cloneCar method
+
     this._brand = brand;
     this._motor = motor;
     this._color = color;
