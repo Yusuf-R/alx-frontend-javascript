@@ -1,13 +1,13 @@
-function cleanSet(setData, startString) {
+function cleanSet(set, startString) {
   let newStr = '';
-  if (!(setData instanceof Set) || typeof startString !== 'string') {
+  if (!(set instanceof Set) || typeof startString !== 'string') {
     return newStr;
   }
-  if (startString.length === 0 || setData.size === 0) {
+  if (startString.length === 0 || set.size === 0) {
     return newStr;
   }
-  setData.forEach((data) => {
-    if (data.startsWith(startString)) {
+  set.forEach((data) => {
+    if (typeof data === 'string' && data.startsWith(startString)) {
       newStr += `${data.slice(startString.length)}-`;
     }
   });
