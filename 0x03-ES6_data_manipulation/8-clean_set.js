@@ -1,9 +1,9 @@
 function cleanSet(setData, startString) {
-  if (!(setData instanceof Set) || typeof startString !== 'string') {
-    return '';
-  }
   let newStr = '';
-  if (startString.length === 0) {
+  if (!(setData instanceof Set) || typeof startString !== 'string') {
+    return newStr;
+  }
+  if (startString.length === 0 || setData.size === 0) {
     return newStr;
   }
   setData.forEach((data) => {
