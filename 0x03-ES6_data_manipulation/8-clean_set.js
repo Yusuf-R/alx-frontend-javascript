@@ -11,7 +11,9 @@ function cleanSet(setData, startString) {
       newStr += `${data.slice(startString.length)}-`;
     }
   });
-  newStr = newStr.slice(0, -1);
+  if (newStr.length > 0) {
+    newStr = newStr.slice(0, -1);
+  }
   return newStr;
 }
 
