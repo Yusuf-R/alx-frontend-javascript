@@ -1,3 +1,4 @@
+// Task 1
 interface Teacher {
   readonly firstName: string,
   readonly lastName: string,
@@ -7,16 +8,19 @@ interface Teacher {
   [key: string]: any  // Index signature allowing any additional properties
 }
 
+// Task 2
 interface Directors extends Teacher {
   numberOfReports:number,
 }
 
+// Task 3
 interface printTeacherFunction {
   (firstName: string, lastName:string): string
 }
 
 const printTeacher: printTeacherFunction = (firstName:string, lastName:string): string => `${firstName[0]}. ${lastName}`
 
+// Task 4
 interface StudenClassInterface {
   firstName: string,
   lastName: string,
@@ -42,6 +46,59 @@ class StudentClass implements StudenClassInterface {
   }
   
 }
+
+// Task 5
+interface DirectorInterface {
+  workFromHome(): string,
+  getCoffeeBreak(): string,
+  workDirectorTasks(): string,
+}
+interface TeacherInterface {
+  workFromHome(): string,
+  getCoffeeBreak(): string,
+  workTeacherTasks(): string,
+}
+
+class Director implements DirectorInterface {
+  workFromHome() {
+      return 'Working from home';
+  }
+  getCoffeeBreak() {
+      return 'Getting a coffee break';
+  }
+  workDirectorTasks() {
+      return 'Getting to director tasks';
+  }
+}
+
+class Teacher implements TeacherInterface {
+  workFromHome() {
+      return 'Cannot work from home';
+  }
+  getCoffeeBreak() {
+      return 'Cannot have a break';
+  }
+  workTeacherTasks() {
+      return 'Getting to work';
+  }
+}
+
+function createEmployee(salary: number | string): Director | Teacher {
+  if (typeof salary === 'number' && salary < 500) {
+      return new Teacher();
+  }
+  return new Director();
+}
+
+
+
+
+
+
+
+
+
+
 
 const teacher3: Teacher = {
   firstName: 'John',
