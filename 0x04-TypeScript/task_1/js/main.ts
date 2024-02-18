@@ -17,6 +17,32 @@ interface printTeacherFunction {
 
 const printTeacher: printTeacherFunction = (firstName:string, lastName:string): string => `${firstName[0]}. ${lastName}`
 
+interface StudenClassInterface {
+  firstName: string,
+  lastName: string,
+  workOnHomework(): string,
+  displayName(): string
+}
+
+class StudentClass implements StudenClassInterface {
+  firstName: string;
+  lastName:string;
+  
+  constructor(firstName:string, lastName:string) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+  }
+      
+  workOnHomework() {
+      return 'Currently working';
+  }
+  
+  displayName() {
+      return this.firstName;
+  }
+  
+}
+
 const teacher3: Teacher = {
   firstName: 'John',
   fullTimeEmployee: false,
@@ -37,3 +63,7 @@ console.log(director1);
 
 console.log();
 console.log(printTeacher('John', 'Doe'));
+
+const stdA = new StudentClass('Yusuf', 'Abdulwasiu');
+console.log(stdA.workOnHomework());
+console.log(stdA.displayName());
