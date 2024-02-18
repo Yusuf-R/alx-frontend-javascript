@@ -7,14 +7,25 @@ interface Teacher {
   [key: string]: any  // Index signature allowing any additional properties
 }
 
+interface Directors extends Teacher {
+  numberOfReports:number,
+}
+
+
 const teacher3: Teacher = {
   firstName: 'John',
   fullTimeEmployee: false,
   lastName: 'Doe',
   location: 'London',
   contract: false,
-};
-
-//teacher3.firstName = 'Jane';  // Error: Cannot assign to 'firstName' because it is a read-only property
-
+};//teacher3.firstName = 'Jane';  // Error: Cannot assign to 'firstName' because it is a read-only property
 console.log(teacher3);
+
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  location: 'London',
+  fullTimeEmployee: true,
+  numberOfReports: 17,
+};
+console.log(director1);
