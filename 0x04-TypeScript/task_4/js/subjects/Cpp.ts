@@ -1,31 +1,21 @@
-// Import SubjectClassInterface from its source file or define it here
-import { SubjectClassInterface, Subject } from "./Subject";
-
+/// <reference path="Subject.ts"/>
+/// <reference path="Teacher.ts"/>
 namespace Subjects {
-  interface Teacher {
-    firstName: string;
+  export interface Teacher {
     experienceTeachingC?: number;
   }
 
-  interface ClassCppInterface extends SubjectClassInterface{
+  export interface ClassCppInterface extends SubjectClassInterface{
     getRequirements(): string,
     getAvailableTeacher(): string,
   }
 
-  export const CppMetadata = {
-    name: 'Cpp',
-    path: 'task_4/subjects/Cpp.ts',
-  };
-
   export class Cpp extends Subject implements ClassCppInterface{
     teacher: Teacher;
-    constructor(teacher: Teacher) {
-      super(teacher);
-    }
-    getRequirements() {
+    getRequirements(): string {
       return 'Here is the list of requirements for Cpp';
     }
-    getAvailableTeacher() {
+    getAvailableTeacher(): string {
       if (!this.teacher.experienceTeachingC) {
         return 'No available teacher';
       }

@@ -1,29 +1,18 @@
-// Import SubjectClassInterface from its source file or define it here
-import { SubjectClassInterface, Subject } from "./Subject";
+/// <reference path="Subject.ts"/>
+/// <reference path="Teacher.ts"/>
 
 namespace Subjects {
-  interface Teacher {
-    firstName: string;
+  export interface Teacher {
     experienceTeachingJava?: number;
   }
 
-  interface ClassJavaInterface extends SubjectClassInterface {
+  export interface ClassJavaInterface extends SubjectClassInterface {
     getRequirements(): string,
     getAvailableTeacher(): string,
   }
 
-  export const JavaMetadata = {
-    name: 'Java',
-    path: 'task_4/subjects/Java.ts',
-  };
-
   export class Java extends Subject implements ClassJavaInterface {
     teacher: Teacher;
-
-    constructor(teacher: Teacher) {
-      super(teacher);
-    }
-
     getRequirements() {
       return 'Here is the list of requirements for Java';
     }
@@ -35,4 +24,6 @@ namespace Subjects {
       return `Available Teacher: ${this.teacher.firstName}`;
     }
   }
+
+
 }
