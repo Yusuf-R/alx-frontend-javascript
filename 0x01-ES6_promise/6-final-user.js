@@ -18,17 +18,22 @@ function handleProfileSignup(firstName, lastName, fileName) {
   const p1 = signUpUser(firstName, lastName);
   const p2 = uploadPhoto(fileName);
   const allPromises = [p1, p2];
-  const obj = [];
+  // const obj = [];
+  // return Promise.allSettled(allPromises)
+  //   .then((rezPromise) => {
+  //     rezPromise.forEach((result) => {
+  //       obj.push({
+  //         status: result.status,
+  //         value: result.status === 'fulfilled' ? result.value : result.reason.message,
+  //       });
+  //     });
+  //     return obj;
+  //   });
   return Promise.allSettled(allPromises)
-    .then((rezPromise) => {
-      rezPromise.forEach((result) => {
-        obj.push({
-          status: result.status,
-          value: result.status === 'fulfilled' ? result.value : result.reason.message,
-        });
-      });
-      return obj;
-    });
+    .then((results) => results.map((aPx) => ({
+      status: aPx.status,
+      value: aPx.status === 'fulfilled' ? aPx.value : `Error: ${aPx.reason.message}`,
+    })));
 }
 
 export default handleProfileSignup;
